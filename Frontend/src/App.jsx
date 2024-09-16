@@ -1,10 +1,10 @@
-
+import Navbar from "./Components/Navbar"
 
 function App() {
 
   return (
     <>
-      <h3 className="text-white bg-black">Subhan</h3>
+  <Navbar></Navbar>
     </>
   )
 }
