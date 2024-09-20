@@ -32,9 +32,9 @@ router.post('/admin/create', async (req, res) => {
 });
 
 // Delete a book
-router.delete('/admin/delete', async (req, res) => {
+router.delete('/admin/delete/:id', async (req, res) => {
     try {
-        const { id } = req.query;
+        const { id } = req.body;
 
         if (!id) return res.status(400).json({ message: "Book ID is required" });
 
@@ -54,33 +54,11 @@ router.delete('/admin/delete', async (req, res) => {
     }
 });
 
-// Get a book by ID
-router.get('/admin/book', async (req, res) => {
-    try {
-        const { id } = req.query;
-
-        if (!id) return res.status(400).json({ message: "Book ID is required" });
-
-        const result = await Book.findById(id);
-        if (!result) {
-            return res.status(404).json({ message: "Book not found" });
-        }
-
-        res.status(200).json({
-            data: result
-        });
-    } catch (error) {
-        res.status(400).json({
-            message: "Error fetching book",
-            error: error.message
-        });
-    }
-});
 
 // Update a book
-router.put('/admin/update', async (req, res) => {
+router.put('/admin/update/:id', async (req, res) => {
     try {
-        const { id } = req.query;
+        const { id } = req.body;
         const { title, img, description, price, category } = req.body;
 
         if (!id) return res.status(400).json({ message: "Book ID is required" });
@@ -88,7 +66,7 @@ router.put('/admin/update', async (req, res) => {
         const updatedBook = await Book.findByIdAndUpdate(
             id,
             { title, img, description, price, category },
-            { new: true, runValidators: true }
+            
         );
 
         if (!updatedBook) {

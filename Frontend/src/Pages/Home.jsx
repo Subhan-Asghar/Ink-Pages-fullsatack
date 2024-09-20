@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import BookCard from '../Components/BookCard'
 import Sidebar from '../Components/Sidebar'
+
 const Home = () => {
   const [data, setData] = useState([])
   const [title, setTitle] = useState('')
@@ -42,9 +43,12 @@ const Home = () => {
   return (
     <>
       {/* Header */}
-      <div className='bg-gradient-to-r from-purple-900 via-indigo-900 to-indigo-800 h-16 fixed top-0 left-0 w-full z-50 flex justify-center items-center shadow-lg'>
-        <h3 className='text-gray-100 font-bold text-2xl tracking-wider'>Ink&Pages</h3>
-      </div>
+      <div className='bg-gradient-to-r from-purple-800 via-purple-900 to-indigo-900 h-16 fixed top-0 left-0 w-full z-20 flex justify-center items-center shadow-2xl'>
+  <h3 className='text-gray-100 font-bold text-3xl tracking-wide uppercase'>
+    Ink&Pages
+  </h3>
+</div>
+
 
       {/* Sidebar */}
       <Sidebar searchTitle={searchTitle} searchCategory={searchCategory} setTitle={setTitle} />
