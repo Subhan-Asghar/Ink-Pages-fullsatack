@@ -7,16 +7,13 @@ router.post('/admin/create', async (req, res) => {
     try {
         const { title, img, description, price, category } = req.body;
 
-        if (!title || !description || !price || !category) {
-            return res.status(400).json({ message: "All fields are required" });
-        }
 
         const newBook = await Book.create({
             title,
             img,
             description,
             price,
-            category
+            category,
         });
 
         res.status(201).json({
@@ -58,7 +55,7 @@ router.delete('/admin/delete/:id', async (req, res) => {
 // Update a book
 router.put('/admin/update/:id', async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
         const { title, img, description, price, category } = req.body;
 
         if (!id) return res.status(400).json({ message: "Book ID is required" });
@@ -114,9 +111,9 @@ router.get('/book/title', async (req, res) => {
         });
     }
 });
-router.get('/book/category', async (req, res) => {
+router.get('/book/:category', async (req, res) => {
     try {
-        const {category}  = req.query;
+        const {category}  = req.params;
 
         const result = await Book.find({category:category});
         res.status(200).json({

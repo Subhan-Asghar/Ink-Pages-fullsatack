@@ -40,7 +40,7 @@ const Sidebar = ({ searchTitle, searchCategory, setTitle }) => {
           {['Fantasy', 'Horror', 'Fiction', 'Mystery', 'Thriller'].map((category) => (
             <li key={category}>
               <button
-                onClick={() => searchCategory(category.toLowerCase())}
+                onClick={() => searchCategory(category)}
                 className='w-full text-left bg-gray-700 hover:bg-purple-700 hover:shadow-lg py-3 px-6 rounded-lg transition duration-300 ease-in-out'>
                 {category}
               </button>

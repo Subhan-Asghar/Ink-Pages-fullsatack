@@ -20,7 +20,7 @@ const Home = () => {
   // Fetch books by category
   const searchCategory = async (category) => {
     try {
-      const res = await axios.get(`http://localhost:3000/book/category?category=${category}`)
+      const res = await axios.get(`http://localhost:3000/book/${category}`)
       setData(res.data.data)
     } catch (err) {
       console.log('Error', err)

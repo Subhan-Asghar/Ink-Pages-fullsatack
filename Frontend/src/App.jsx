@@ -10,11 +10,11 @@ function App() {
 
   return (
     <>
-    <Logout.Provider value={setlogin}>
+    <Logout.Provider value={{login,setlogin}}>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/admin' element={<Admin/>}></Route>
-      <Route to={'/admin/create'} element={login?<Create/>:<Admin/>}></Route>
+      <Route path={'/admin/create'} element={login?<Create/>:<Admin/>}></Route>
     </Routes>
     </Logout.Provider>
     </>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import Logout from '../context/ContextApi'
 
 const Admin = () => {
-  const {setlogin }=useContext(Logout)
+  const {login,setlogin }=useContext(Logout)
   const [key, setKey] = useState('')
   const [check, setCheck] = useState(false)
   const correctKey = 'admin123' 
