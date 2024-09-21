@@ -19,7 +19,7 @@ const Create = () => {
     try {
       const res = await axios.post('http://localhost:3000/admin/create', data);
       console.log(res.data);
-      
+
       // Reset form fields
       setTitle('');
       setPrice(0);
@@ -39,6 +39,7 @@ const Create = () => {
       <div className='max-w-md mx-auto p-6 bg-white rounded-lg shadow-md mt-6'>
         <form className='flex flex-col space-y-4' onSubmit={handleSubmit}>
           <input
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
             type='text'
             name='title'
@@ -47,6 +48,7 @@ const Create = () => {
             required
           />
           <input
+            value={price}
             type='number'
             name='price'
             onChange={(e) => setPrice(e.target.value)}
@@ -69,6 +71,8 @@ const Create = () => {
             <option value='Thriller'>Thriller</option>
           </select>
           <input
+            value={img}
+
             type='url'
             onChange={(e) => setImg(e.target.value)}
             name='imgLink'

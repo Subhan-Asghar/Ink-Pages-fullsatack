@@ -5,14 +5,27 @@ import Create from './Pages/Create'
 import View from './Pages/View'
 import Update from './Pages/Update'
 import Logout from './context/ContextApi'
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+
 
 function App() {
   const [login, setlogin] = useState(false)
 
+  useEffect(() => {
+    const savedLogin = localStorage.getItem('login');
+    if (savedLogin === 'true') {
+      setlogin(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setlogin(true);
+    localStorage.setItem('login', 'true');
+  };
+
   return (
     <>
-    <Logout.Provider value={{login,setlogin}}>
+    <Logout.Provider value={{login,setlogin,handleLogin}}>
     <Routes>
       <Route path='/' element={<Home/>}></Route>
       <Route path='/admin' element={<Admin/>}></Route>

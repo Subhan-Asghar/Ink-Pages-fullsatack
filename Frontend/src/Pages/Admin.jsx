@@ -1,15 +1,22 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext,useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Logout from '../context/ContextApi'
 
 const Admin = () => {
-  const {login,setlogin }=useContext(Logout)
+  const {login,setlogin,handleLogin }=useContext(Logout)
   const [key, setKey] = useState('')
   const [check, setCheck] = useState(false)
   const correctKey = 'admin123' 
+  useEffect(() => {
+    const savedLogin = localStorage.getItem('login');
+    if (savedLogin === 'true') {
+      setCheck(true);
+    }
+  }, []);
+
   const keycheck=()=>{
     if(key==correctKey){
-      setlogin(true)
+      handleLogin()
       setCheck(true)
     }
     else{
@@ -18,7 +25,7 @@ const Admin = () => {
   }
   const logout=()=>{
     setCheck(false);
-    setlogin(false);
+    localStorage.removeItem('login');
   }
 
   return (
