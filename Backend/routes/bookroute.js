@@ -27,13 +27,25 @@ router.post('/admin/create', async (req, res) => {
         });
     }
 });
+router.get('/admin/book/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
 
+        const result = await Book.findById(id);
+        res.status(200).json({
+            data: result
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Error"
+        });
+    }
+});
 // Delete a book
 router.delete('/admin/delete/:id', async (req, res) => {
     try {
-        const { id } = req.body;
+        const { id } = req.params;
 
-        if (!id) return res.status(400).json({ message: "Book ID is required" });
 
         const result = await Book.findByIdAndDelete(id);
         if (!result) {
@@ -56,13 +68,13 @@ router.delete('/admin/delete/:id', async (req, res) => {
 router.put('/admin/update/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { title, img, description, price, category } = req.body;
+        const { title, img, price, category } = req.body;
 
         if (!id) return res.status(400).json({ message: "Book ID is required" });
 
         const updatedBook = await Book.findByIdAndUpdate(
             id,
-            { title, img, description, price, category },
+            { title, img, price, category },
             
         );
 

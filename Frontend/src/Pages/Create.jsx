@@ -19,6 +19,7 @@ const Create = () => {
     try {
       const res = await axios.post('http://localhost:3000/admin/create', data);
       console.log(res.data);
+      
       // Reset form fields
       setTitle('');
       setPrice(0);

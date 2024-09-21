@@ -5,7 +5,7 @@ const BookCard = ({ book }) => (
     <img
       src={book.img}
       alt={book.title}
-      className='w-full h-56 object-cover'
+      className='w-full h-auto '
     />
     <div className='p-6'>
       <h3 className='text-xl font-semibold text-gray-800 mb-3'>{book.title}</h3>

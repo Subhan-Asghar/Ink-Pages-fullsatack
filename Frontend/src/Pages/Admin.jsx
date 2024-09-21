@@ -49,7 +49,7 @@ const Admin = () => {
              <Link to={'/admin/create'}>Add Book</Link> 
             </button>
             <button className='bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition duration-300 ease-in-out shadow-lg'>
-              <Link to={'/admin/book'}> Update/Delete Book</Link>
+              <Link to={'/admin/edit'}> Update/Delete Book</Link>
             </button>
           </div>
           <button 
